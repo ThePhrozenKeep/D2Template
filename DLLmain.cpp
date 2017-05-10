@@ -137,7 +137,7 @@ int __stdcall DllAttach()
 {
     D2TEMPLATE_GetDebugPrivilege();
 
-    void* hGame = OpenProcess(PROCESS_ALL_ACCESS, 0, GetCurrentProcessId());
+    void* hGame = GetCurrentProcess();
     if (!hGame) 
     {
         D2TEMPLATE_FatalError("Failed to retrieve process");
@@ -147,13 +147,10 @@ int __stdcall DllAttach()
     if (!D2TEMPLATE_LoadModules())
     {
         D2TEMPLATE_FatalError("Failed to load modules");
-        CloseHandle(hGame);
         return 0;
     }
 
     D2TEMPLATE_ApplyPatch(hGame, gptTemplatePatches);
-
-    CloseHandle(hGame);
 
     return 1;
 }
