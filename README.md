@@ -2,7 +2,7 @@
 
 D2Template is an open source community project that was developed in order to help modders getting started into advanced code editing on Diablo II. The library provides a basic and simple codebase, ready to be injected in-game, allowing you to quickly inject your own code, without the need to learn stuff like memory patching.
 
-The documentation can be found [here](https://github.com/olivier-verville/D2Template/wiki/Index)
+The documentation can be found [here](https://github.com/olivierverville/D2Template/wiki)
 
 ## What does the template include?
 
