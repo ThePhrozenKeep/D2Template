@@ -168,3 +168,22 @@ int __stdcall DllMain(HINSTANCE hModule, DWORD dwReason, void* lpReserved)
 
     return TRUE;
 }
+
+DWORD __fastcall GetDllOffset(char* ModuleName, DWORD BaseAddress, int Offset)
+{
+	if(!BaseAddress)
+		BaseAddress = (DWORD)LoadLibraryA(GetModuleExt(ModuleName));
+
+	if(Offset < 0)
+		return (DWORD)GetProcAddress((HMODULE)BaseAddress,(LPCSTR)(-Offset));
+
+	return BaseAddress + Offset;
+}
+
+char* __fastcall GetModuleExt(char* ModuleName)
+{
+	char DLLExt[] = ".dll";
+	char DLLName[32] = {0};
+	strcpy(DLLName,ModuleName);
+	return strcat(DLLName,DLLExt);
+}
